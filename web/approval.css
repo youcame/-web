@@ -1,0 +1,51 @@
+/* 设置表格的样式 */
+table {
+  border-collapse: collapse;
+  margin: 20px auto;
+}
+
+table th, table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+/* 设置标题的样式 */
+h1 {
+  text-align: center;
+  margin: 30px auto;
+}
+
+/* 设置按钮的样式 */
+input[type="button"] {
+  background-color: gray;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="button"]:hover {
+  background-color: gray;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-container div {
+  flex: 1;
+  text-align: center;
+}
+
+.button-container div:first-child {
+  margin-right: auto;
+}
+
+.button-container div:last-child {
+  margin-left: auto;
+}
+
+
+
