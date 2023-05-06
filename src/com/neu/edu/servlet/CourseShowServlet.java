@@ -22,7 +22,7 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-
+//用于显示学生课表
 @WebServlet(name = "CourseShowServlet", value = "/CourseShowServlet")
 public class CourseShowServlet extends HttpServlet {
     private SelectionService selectionService;

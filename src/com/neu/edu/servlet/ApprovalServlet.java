@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+//用于展示学生与老师的所有申请
 @WebServlet(name = "ApprovalServlet", value = "/ApprovalServlet")
 public class ApprovalServlet extends HttpServlet {
     private ApprovalService approvalService;

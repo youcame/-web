@@ -11,7 +11,7 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
+//用于修改申请内容
 @WebServlet(name = "ApprovalPassServlet", value = "/ApprovalExamineServlet")
 public class ApprovalExamineServlet extends HttpServlet {
     @Override
