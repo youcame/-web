@@ -9,6 +9,8 @@ public class Approval {
     private String beginTime;
     private String endTime;
     private String courseName;
+    private String rejectReason;
+    private String chooseReason;
     public Approval(String studentId, String teacherId, String id, String state, String result, String beginTime, String endTime, String courseName) {
         this.studentId = studentId;
         this.teacherId = teacherId;
@@ -86,5 +88,21 @@ public class Approval {
 
     public void setEndTime(String endTime) {
         this.endTime = endTime;
+    }
+
+    public String getRejectReason() {
+        return rejectReason;
+    }
+
+    public void setRejectReason(String rejectReason) {
+        this.rejectReason = rejectReason;
+    }
+
+    public String getChooseReason() {
+        return chooseReason;
+    }
+
+    public void setChooseReason(String chooseReason) {
+        this.chooseReason = chooseReason;
     }
 }

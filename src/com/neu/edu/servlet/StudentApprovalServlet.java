@@ -18,6 +18,7 @@ public class StudentApprovalServlet extends HttpServlet {
         ApprovalService approvalService = new ApprovalServiceImpl(new ApprovalDaoImpl(DB.getConnection()));
         String approvalId = request.getParameter("approvalId");
         String state = request.getParameter("state");
+        String reason = request.getParameter("reason");
         try {
             approvalService.changeStudentApproval(approvalId,state);
             request.getRequestDispatcher("ApprovalServlet").forward(request,response);
