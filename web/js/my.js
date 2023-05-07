@@ -5,9 +5,6 @@ function checkApproval(){
     window.location.href = "ApprovalServlet"
 }
 
-function chooseApproval(){
-
-}
 function back(){
     window.location.href="CourseShowServlet"
 }
@@ -31,3 +28,12 @@ function studentUndoApproval(approvalId){
 function studentChooseApproval(approvalId){
     window.location.href = "StudentApprovalServlet?approvalId=" + approvalId + "&state=unapproved"
 }
+
+function showReason(reason) {
+    console.log('reason:', reason);
+    window.alert(reason);
+}
+function showCongratulation(){
+    window.alert("绝绝子，恭喜您通过了审核喵~");
+}
+

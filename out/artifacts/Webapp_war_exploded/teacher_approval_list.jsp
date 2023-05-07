@@ -39,7 +39,8 @@
                 <td>${approval.teacherId}</td>
                 <td>${approval.beginTime}</td>
                 <td>${approval.state}</td>
-                <td><input type="button" value="通过" onclick="passApproval('${approval.id}')"/> &nbsp;<input type="button" value="不通过" onclick="unpassApproval('${approval.id}')"/></td>
+                <td><input type="button" value="通过" onclick="passApproval('${approval.id}')"/> &nbsp;
+                    <input type="button" value="不通过" onclick="unpassApproval('${approval.id}')"/></td>
             </tr>
         </c:if>
     </c:forEach>

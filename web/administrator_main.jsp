@@ -55,6 +55,7 @@
             <th>申请结果</th>
             <th>申请开始时间</th>
             <th>申请结束时间</th>
+            <th>审批原因</th>>
         </tr>
         <c:forEach items="${approvalList}" var="approval">
             <c:if test="${approval.state.equals('end')}">
@@ -67,6 +68,12 @@
                     <td>${approval.result}</td>
                     <td>${approval.beginTime}</td>
                     <td>${approval.endTime}</td>
+                    <c:if test="${approval.result.equals('false')}">
+                        <td><input type="button" onclick="showReason('${approval.rejectReason}')" value="查看原因" /></td>
+                    </c:if>
+                    <c:if test="${approval.result.equals('true')}">
+                        <td><input type="button" onclick="showCongratulation()" value="查看原因" /></td>
+                    </c:if>
                 </tr>
             </c:if>
         </c:forEach>

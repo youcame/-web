@@ -21,7 +21,8 @@ public class ApprovalExamineServlet extends HttpServlet {
         String result = request.getParameter("result");
         try {
             approvalService.changeApproval(approvalId,result);
-            request.getRequestDispatcher("ApprovalServlet").forward(request,response);
+            if("false".equals(result))request.getRequestDispatcher("reason.jsp").forward(request,response);
+            else request.getRequestDispatcher("ApprovalServlet").forward(request,response);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

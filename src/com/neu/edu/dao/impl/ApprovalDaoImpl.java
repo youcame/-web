@@ -42,7 +42,8 @@ public class ApprovalDaoImpl implements ApprovalDao {
 
     @Override
     public void updateApproval(Approval approval) throws SQLException {
-        String sql = "UPDATE approval SET studentId=?, teacherId=?, state=?, result=?, beginTime=?, endTime=?, courseName=? WHERE id=?";
+        String sql = "UPDATE approval SET studentId=?, teacherId=?, state=?, result=?, beginTime=?, endTime=?," +
+                " courseName=?, chooseReason=?, rejectReason=? WHERE id=?";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, approval.getStudentId());
         statement.setString(2, approval.getTeacherId());
@@ -51,7 +52,9 @@ public class ApprovalDaoImpl implements ApprovalDao {
         statement.setString(5, approval.getBeginTime());
         statement.setString(6, approval.getEndTime());
         statement.setString(7, approval.getCourseName());
-        statement.setString(8, approval.getId());
+        statement.setString(8, approval.getChooseReason());
+        statement.setString(9, approval.getRejectReason());
+        statement.setString(10, approval.getId());
         statement.executeUpdate();
     }
 
@@ -70,6 +73,8 @@ public class ApprovalDaoImpl implements ApprovalDao {
             approval.setResult(resultSet.getString("result"));
             approval.setBeginTime(resultSet.getString("beginTime"));
             approval.setEndTime(resultSet.getString("endTime"));
+            approval.setChooseReason(resultSet.getString("chooseReason"));
+            approval.setRejectReason(resultSet.getString("rejectReason"));
             approval.setCourseName(resultSet.getString("courseName"));
             return approval;
         } else {
@@ -93,6 +98,8 @@ public class ApprovalDaoImpl implements ApprovalDao {
             approval.setBeginTime(resultSet.getString("beginTime"));
             approval.setEndTime(resultSet.getString("endTime"));
             approval.setCourseName(resultSet.getString("courseName"));
+            approval.setChooseReason(resultSet.getString("chooseReason"));
+            approval.setRejectReason(resultSet.getString("rejectReason"));
             approvals.add(approval);
         }
         return approvals;

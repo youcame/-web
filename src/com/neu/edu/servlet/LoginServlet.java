@@ -72,7 +72,6 @@ public class LoginServlet extends HttpServlet {
                 }
             }
             for(Administrator administrator:administratorList){
-                System.out.println(username);
                 if(administrator.getName().equals(username)){
                     if(administrator.getPassword().equals(password)){
                         session.setAttribute("username",username);
