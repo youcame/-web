@@ -12,4 +12,5 @@ public interface ApprovalDao {
     public void updateApproval(Approval approval) throws SQLException;
     public Approval getApprovalById(String id) throws SQLException;
     public List<Approval> getAllApprovals() throws SQLException;
+    public List<Approval> getApprovalsByType(String type,String content,String studentId) throws  SQLException;
 }

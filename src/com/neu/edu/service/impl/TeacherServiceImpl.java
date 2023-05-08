@@ -36,6 +36,11 @@ public class TeacherServiceImpl implements TeacherService {
     public List<Teacher> getAllTeachers() throws SQLException {
         return teacherDao.getAllTeachers();
     }
+
+    @Override
+    public Teacher getTeacherByName(String name) throws SQLException {
+        return teacherDao.getTeacherByName(name);
+    }
     //登陆验证
 
 

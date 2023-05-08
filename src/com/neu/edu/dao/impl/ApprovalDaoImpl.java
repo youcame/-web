@@ -105,4 +105,39 @@ public class ApprovalDaoImpl implements ApprovalDao {
         return approvals;
     }
 
+    @Override
+    public List<Approval> getApprovalsByType(String type, String content, String studentId) throws SQLException{
+        List<Approval> approvals = new ArrayList<>();
+        String sql = "SELECT * FROM approval WHERE ";
+        if ("result".equals(type)) {
+            sql += "result = ?";
+        } else if ("teacherId".equals(type)) {
+            sql += "teacherId = ?";
+        } else if ("courseName".equals(type)) {
+            sql += "courseName = ?";
+        } else if("approvalId".equals(type)){
+            sql += "id = ?";
+        }
+        sql += " AND studentId = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, content);
+        statement.setString(2, studentId);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            Approval approval = new Approval();
+            approval.setId(resultSet.getString("id"));
+            approval.setStudentId(resultSet.getString("studentId"));
+            approval.setTeacherId(resultSet.getString("teacherId"));
+            approval.setState(resultSet.getString("state"));
+            approval.setResult(resultSet.getString("result"));
+            approval.setBeginTime(resultSet.getString("beginTime"));
+            approval.setEndTime(resultSet.getString("endTime"));
+            approval.setCourseName(resultSet.getString("courseName"));
+            approval.setChooseReason(resultSet.getString("chooseReason"));
+            approval.setRejectReason(resultSet.getString("rejectReason"));
+            approvals.add(approval);
+        }
+        return approvals;
+    }
+
 }

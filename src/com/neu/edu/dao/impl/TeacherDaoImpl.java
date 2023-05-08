@@ -16,7 +16,7 @@ public class TeacherDaoImpl implements TeacherDao {
     }
     @Override
     public void addTeacher(Teacher teacher) throws SQLException {
-        String sql = "INSERT INTO student (id, password, name, unApprovedCourse) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO teacher (id, password, name, unApprovedCourse) VALUES (?, ?, ?, ?)";
 
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, teacher.getId());
@@ -28,8 +28,7 @@ public class TeacherDaoImpl implements TeacherDao {
 
     @Override
     public void deleteTeacher(String id) throws SQLException {
-        String sql = "DELETE FROM teacher WHERE ID = ?";
-
+        String sql = "DELETE FROM teacher WHERE id = ?";
         PreparedStatement statement=connection.prepareStatement(sql);
         statement.setString(1,id);
         statement.executeUpdate();
@@ -77,5 +76,21 @@ public class TeacherDaoImpl implements TeacherDao {
             students.add(teacher);
         }
         return students;
+    }
+
+    @Override
+    public Teacher getTeacherByName(String name) throws SQLException {
+        Teacher teacher = null;
+        String sql = "select * from teacher where name = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1,name);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            String password = resultSet.getString("password");
+            String id = resultSet.getString("id");
+            String unApprovedCourse = resultSet.getString("unApprovedCourse");
+            teacher = new Teacher(id, name, password, unApprovedCourse);
+        }
+        return teacher;
     }
 }

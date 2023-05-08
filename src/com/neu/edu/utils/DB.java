@@ -11,7 +11,7 @@ public final class DB {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/javaweb?characterEncoding=utf-8&serverTimezone=GMT%2B8";
-            connection = DriverManager.getConnection(url, "root", "yourpassword");
+            connection = DriverManager.getConnection(url, "root", "huangdianbei2017");
         } catch (ClassNotFoundException e) {
             throw new RuntimeException("Failed to load database driver", e);
         } catch (SQLException e) {

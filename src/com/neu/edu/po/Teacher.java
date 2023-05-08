@@ -7,6 +7,7 @@ public class Teacher {
     private String name;
     private String password;
     private String unApprovedCourse;
+    public  Teacher(){}
     public Teacher(String id, String name, String password, String unApprovedCourse) {
         this.id = id;
         this.name = name;

@@ -12,4 +12,5 @@ public interface TeacherDao {
     public void updateTeacher(Teacher teacher) throws SQLException;
     public Teacher getTeacherById(String id) throws SQLException;
     public List<Teacher> getAllTeachers() throws SQLException;
+    public Teacher getTeacherByName(String name) throws SQLException;
 }
