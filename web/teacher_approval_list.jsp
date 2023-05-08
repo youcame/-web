@@ -27,7 +27,7 @@
         <th>学生id</th>
         <th>老师id</th>
         <th>申请开始时间</th>
-        <th>申请是否结束</th>
+        <th>申请原因</th>
         <th>操作</th>
     </tr>
     <c:forEach items="${list}" var="approval" varStatus="status">
@@ -38,7 +38,7 @@
                 <td>${approval.studentId}</td>
                 <td>${approval.teacherId}</td>
                 <td>${approval.beginTime}</td>
-                <td>${approval.state}</td>
+                <td><input type="button" value="申请原因" onclick="showReason('${approval.chooseReason}')"/></td>
                 <td><input type="button" value="通过" onclick="passApproval('${approval.id}')"/> &nbsp;
                     <input type="button" value="不通过" onclick="unpassApproval('${approval.id}')"/></td>
             </tr>
@@ -56,7 +56,7 @@
             <th>申请是否通过</th>
             <th>申请开始时间</th>
             <th>申请结束时间</th>
-            <th>申请是否结束</th>
+            <th>申请原因</th>
             <c:if test="${authority eq 'teacher'}"><th>操作</th></c:if>
         </tr>
         <c:forEach items="${list}" var="approval" varStatus="status">
@@ -69,7 +69,7 @@
                     <td>${approval.result}</td>
                     <td>${approval.beginTime}</td>
                     <td>${approval.endTime}</td>
-                    <td>${approval.state}</td>
+                    <td><input type="button" value="申请原因" onclick="showReason('${approval.chooseReason}')"/></td>
                     <td><input type="button" value="撤销" onclick="undoApproval('${approval.id}')"/></td>
                 </tr>
             </c:if>

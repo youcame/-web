@@ -49,6 +49,7 @@ public class LoginServlet extends HttpServlet {
                         session.setAttribute("isLogin",true);
                         session.setAttribute("authority","student");
                         session.setAttribute("student", student);
+
                         request.getRequestDispatcher("CourseShowServlet").forward(request,response);
                     }
                     else{

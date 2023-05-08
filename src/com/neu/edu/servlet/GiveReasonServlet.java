@@ -1,5 +1,6 @@
 package com.neu.edu.servlet;
 
+import com.mysql.cj.Session;
 import com.neu.edu.dao.impl.ApprovalDaoImpl;
 import com.neu.edu.service.ApprovalService;
 import com.neu.edu.service.impl.ApprovalServiceImpl;
@@ -23,7 +24,8 @@ public class GiveReasonServlet extends HttpServlet {
         String reason = request.getParameter("reason");
         String approvalId = request.getParameter("approvalId");
         ApprovalService approvalService = new ApprovalServiceImpl(new ApprovalDaoImpl(DB.getConnection()));
-        String authority = request.getParameter("authority");
+        HttpSession session = request.getSession();
+        String authority = (String) session.getAttribute("authority");
         try {
             if("teacher".equals(authority)) {
                 approvalService.giveRejectReason(approvalId, reason);

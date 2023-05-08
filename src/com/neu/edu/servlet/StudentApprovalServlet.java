@@ -10,7 +10,7 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
+//处理学生申请的Servlet
 @WebServlet(name = "StudentApprovalServlet", value = "/StudentApprovalServlet")
 public class StudentApprovalServlet extends HttpServlet {
     @Override
@@ -21,6 +21,7 @@ public class StudentApprovalServlet extends HttpServlet {
         String reason = request.getParameter("reason");
         try {
             approvalService.changeStudentApproval(approvalId,state);
+            if("unapproved".equals(state))request.getRequestDispatcher("reason.jsp").forward(request,response);
             request.getRequestDispatcher("ApprovalServlet").forward(request,response);
         } catch (SQLException e) {
             throw new RuntimeException(e);
