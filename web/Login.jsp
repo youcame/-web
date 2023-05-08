@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>学生选课与教师审批系统</title>
-    <link href="login.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
     <script type="text/javascript">
         if(window.location.href.indexOf("notLogin")!=-1){
             alert("您还没有登录喵~")

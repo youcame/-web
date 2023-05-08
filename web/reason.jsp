@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>拒绝申请的原因</title>
-    <link rel="stylesheet" type="text/css" href="reason.css">
+    <link rel="stylesheet" type="text/css" href="css/reason.css">
 </head>
 <body>
 <h2 align="center">填写选择原因</h2>

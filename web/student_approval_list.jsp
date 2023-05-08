@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <link rel="stylesheet" href="approval.css">
+    <link rel="stylesheet" href="css/approval.css">
     <script type="application/javascript" src="js/my.js"></script>
     <title>申请请求</title>
 </head>

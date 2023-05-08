@@ -18,7 +18,7 @@ public class Filter implements jakarta.servlet.Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest request1 = (HttpServletRequest) request;
-        if(request1.getRequestURI().endsWith("Login.jsp")||request1.getRequestURI().endsWith("LoginServlet")){
+        if(request1.getRequestURI().endsWith("Login.jsp")||request1.getRequestURI().endsWith("LoginServlet")||request1.getRequestURI().endsWith("login.css")){
             chain.doFilter(request,response);
         }
         else if(request1.getSession().getAttribute("isLogin") == null){
