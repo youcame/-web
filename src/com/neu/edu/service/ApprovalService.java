@@ -14,4 +14,5 @@ public interface ApprovalService {
     public void changeApproval(String approvalId,String result) throws SQLException;
     void changeStudentApproval(String approvalId, String result) throws  SQLException;
     void giveRejectReason(String approvalId, String reason) throws SQLException;
+    void giveChooseReason(String approvalId, String reason)throws SQLException;
 }

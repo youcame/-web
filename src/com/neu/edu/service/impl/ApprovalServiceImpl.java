@@ -88,5 +88,10 @@ public class ApprovalServiceImpl implements ApprovalService {
         approval.setRejectReason(reason);;
         approvalDao.updateApproval(approval);
     }
-
+    @Override
+    public void giveChooseReason(String approvalId, String reason) throws SQLException {
+        Approval approval = approvalDao.getApprovalById(approvalId);
+        approval.setChooseReason(reason);;
+        approvalDao.updateApproval(approval);
+    }
 }

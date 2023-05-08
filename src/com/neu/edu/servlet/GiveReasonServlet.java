@@ -23,9 +23,15 @@ public class GiveReasonServlet extends HttpServlet {
         String reason = request.getParameter("reason");
         String approvalId = request.getParameter("approvalId");
         ApprovalService approvalService = new ApprovalServiceImpl(new ApprovalDaoImpl(DB.getConnection()));
+        String authority = request.getParameter("authority");
         try {
-            approvalService.giveRejectReason(approvalId,reason);
-            request.getRequestDispatcher("ApprovalServlet").forward(request,response);
+            if("teacher".equals(authority)) {
+                approvalService.giveRejectReason(approvalId, reason);
+            }
+            if("student".equals(authority)){
+                approvalService.giveChooseReason(approvalId,reason);
+            }
+            request.getRequestDispatcher("ApprovalServlet").forward(request, response);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
