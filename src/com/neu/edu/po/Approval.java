@@ -11,6 +11,24 @@ public class Approval {
     private String courseName;
     private String rejectReason;
     private String chooseReason;
+    private String confirm;
+    private String secondResult;
+    public String getConfirm() {
+        return confirm;
+    }
+
+    public void setConfirm(String confirm) {
+        this.confirm = confirm;
+    }
+
+    public String getSecondResult() {
+        return secondResult;
+    }
+
+    public void setSecondResult(String secondResult) {
+        this.secondResult = secondResult;
+    }
+
     public Approval(String studentId, String teacherId, String id, String state, String result, String beginTime, String endTime, String courseName) {
         this.studentId = studentId;
         this.teacherId = teacherId;

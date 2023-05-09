@@ -19,7 +19,8 @@ public class ApprovalDaoImpl implements ApprovalDao {
     }
     @Override
     public void addApproval(Approval approval) throws SQLException {
-        String sql = "INSERT INTO approval (id, studentId, teacherId, state, result, beginTime, endTime, courseName) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO approval (id, studentId, teacherId, state, result, beginTime, endTime, courseName, confirm, secondResult) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, approval.getId());
         statement.setString(2, approval.getStudentId());
@@ -29,6 +30,8 @@ public class ApprovalDaoImpl implements ApprovalDao {
         statement.setString(6, MyDate.getDate());
         statement.setString(7, approval.getEndTime());
         statement.setString(8,approval.getCourseName());
+        statement.setString(9,approval.getConfirm());
+        statement.setString(10,approval.getSecondResult());
         statement.executeUpdate();
     }
 
@@ -43,7 +46,7 @@ public class ApprovalDaoImpl implements ApprovalDao {
     @Override
     public void updateApproval(Approval approval) throws SQLException {
         String sql = "UPDATE approval SET studentId=?, teacherId=?, state=?, result=?, beginTime=?, endTime=?," +
-                " courseName=?, chooseReason=?, rejectReason=? WHERE id=?";
+                " courseName=?, chooseReason=?, rejectReason=?, confirm=?, secondResult=?  WHERE id=?";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, approval.getStudentId());
         statement.setString(2, approval.getTeacherId());
@@ -54,7 +57,10 @@ public class ApprovalDaoImpl implements ApprovalDao {
         statement.setString(7, approval.getCourseName());
         statement.setString(8, approval.getChooseReason());
         statement.setString(9, approval.getRejectReason());
-        statement.setString(10, approval.getId());
+        statement.setString(10,approval.getConfirm());
+        statement.setString(11,approval.getSecondResult());
+        statement.setString(12, approval.getId());
+
         statement.executeUpdate();
     }
 
@@ -76,6 +82,8 @@ public class ApprovalDaoImpl implements ApprovalDao {
             approval.setChooseReason(resultSet.getString("chooseReason"));
             approval.setRejectReason(resultSet.getString("rejectReason"));
             approval.setCourseName(resultSet.getString("courseName"));
+            approval.setConfirm(resultSet.getString("confirm"));
+            approval.setSecondResult(resultSet.getString("secondResult"));
             return approval;
         } else {
             return null;
@@ -100,6 +108,8 @@ public class ApprovalDaoImpl implements ApprovalDao {
             approval.setCourseName(resultSet.getString("courseName"));
             approval.setChooseReason(resultSet.getString("chooseReason"));
             approval.setRejectReason(resultSet.getString("rejectReason"));
+            approval.setConfirm(resultSet.getString("confirm"));
+            approval.setSecondResult(resultSet.getString("secondResult"));
             approvals.add(approval);
         }
         return approvals;
@@ -135,6 +145,8 @@ public class ApprovalDaoImpl implements ApprovalDao {
             approval.setCourseName(resultSet.getString("courseName"));
             approval.setChooseReason(resultSet.getString("chooseReason"));
             approval.setRejectReason(resultSet.getString("rejectReason"));
+            approval.setSecondResult(resultSet.getString("secondResult"));
+            approval.setConfirm(resultSet.getString("confirm"));
             approvals.add(approval);
         }
         return approvals;

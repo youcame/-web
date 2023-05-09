@@ -78,14 +78,16 @@
         <th>课程名称</th>
         <th>学生id</th>
         <th>老师id</th>
-        <th>申请是否通过</th>
+        <th>一审结果</th>
+        <th>二审结果</th>
         <th>申请开始时间</th>
         <th>申请结束时间</th>
         <th>申请原因</th>
         <th>审批原因</th>
+        <th>确认</th>
     </tr>
     <c:forEach items="${list}" var="approval" varStatus="status">
-        <c:if test = "${approval.state.equals('end')}">
+        <c:if test = "${approval.state eq 'end' and approval.confirm ne 'true'}">
             <c:if test="${student.id.equals(approval.studentId)}">
                 <tr>
                     <td>${approval.id}</td>
@@ -93,6 +95,7 @@
                     <td>${approval.studentId}</td>
                     <td>${approval.teacherId}</td>
                     <td>${approval.result}</td>
+                    <td>${approval.secondResult}</td>
                     <td>${approval.beginTime}</td>
                     <td>${approval.endTime}</td>
                     <td><input type="button" value="申请原因" onclick="showReason('${approval.chooseReason}')"/></td>
@@ -102,6 +105,7 @@
                     <c:if test="${approval.result.equals('true')}">
                         <td><input type="button" onclick="showCongratulation()" value="申请成功" /></td>
                     </c:if>
+                    <td><input type="button" onclick="confirmChoice('${approval.id}')" value="确认无误"></td>
                 </tr>
             </c:if>
         </c:if>

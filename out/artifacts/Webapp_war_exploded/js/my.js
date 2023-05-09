@@ -6,7 +6,7 @@ function checkApproval(){
 }
 
 function back(){
-    window.location.href="CourseShowServlet"
+    window.history.back();
 }
 
 function passApproval(approvalId){
@@ -55,5 +55,26 @@ function deleteTeacher(id){
 
 function goSearch(){
     window.location.href="approval_search.jsp"
+}
+
+function passSecondApproval(approvalId){
+    window.location.href="SecondApprovalExamineServlet?approvalId="+approvalId+"&secondResult=true"
+}
+
+function unpassSecondApproval(approvalId){
+    window.location.href="SecondApprovalExamineServlet?approvalId="+approvalId+"&secondResult=false"
+}
+
+function undoSecondApproval(approvalId){
+    window.location.href="SecondApprovalExamineServlet?approvalId="+approvalId+"&secondResult=null"
+}
+function goFindSecondExaminedApproval(){
+    window.location.href="SecondApprovalExamineServlet?approvalId=null&secondResult=null"
+}
+
+function confirmChoice(approvalId){
+    if(confirm("确认本次审批无误吗？(有错误请联系管理员电话10086)")) {
+        window.location.href = "ConfirmServlet?approvalId=" + approvalId
+    }
 }
 

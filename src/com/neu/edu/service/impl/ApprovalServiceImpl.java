@@ -94,4 +94,10 @@ public class ApprovalServiceImpl implements ApprovalService {
         approval.setChooseReason(reason);;
         approvalDao.updateApproval(approval);
     }
+    @Override
+    public void changeSecondApproval(String approvalId,String secondResult) throws  SQLException{
+        Approval approval = approvalDao.getApprovalById(approvalId);
+        approval.setSecondResult(secondResult);
+        approvalDao.updateApproval(approval);
+    }
 }

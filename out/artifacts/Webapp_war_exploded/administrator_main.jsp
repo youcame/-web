@@ -48,28 +48,28 @@
         </c:forEach>
     </table>
     <input type="button" onclick="addUser()" value="新增用户" class="centered-button"/>
-    <h2 align="center">审批列表</h2>
+    <h2 align="center">待审批列表</h2>
+    <input type="button" onclick="goFindSecondExaminedApproval()" value="查看审批列表" class="centered-button"/>
     <table align="center" border="1">
         <tr>
             <th>申请id</th>
             <th>课程名称</th>
             <th>学生id</th>
             <th>老师id</th>
-            <th>申请状态</th>
-            <th>申请结果</th>
+            <th>一审结果</th>
             <th>申请开始时间</th>
             <th>申请结束时间</th>
             <th>申请原因</th>
             <th>审批原因</th>
+            <th>操作</th>
         </tr>
         <c:forEach items="${approvalList}" var="approval">
-            <c:if test="${approval.state.equals('end')}">
+            <c:if test="${approval.state eq 'end' and approval.secondResult eq 'null'}">
                 <tr>
                     <td>${approval.id}</td>
                     <td>${approval.courseName}</td>
                     <td>${approval.studentId}</td>
                     <td>${approval.teacherId}</td>
-                    <td>${approval.state}</td>
                     <td>${approval.result}</td>
                     <td>${approval.beginTime}</td>
                     <td>${approval.endTime}</td>
@@ -80,10 +80,13 @@
                     <c:if test="${approval.result.equals('true')}">
                         <td><input type="button" onclick="showCongratulation()" value="查看原因" /></td>
                     </c:if>
+                    <td><input type="button" value="通过" onclick="passSecondApproval('${approval.id}')"/> &nbsp;
+                        <input type="button" value="不通过" onclick="unpassSecondApproval('${approval.id}')"/></td>
                 </tr>
             </c:if>
         </c:forEach>
     </table>
+
 </div>
 
 <div class="button-container">

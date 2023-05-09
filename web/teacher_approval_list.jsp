@@ -60,7 +60,7 @@
             <c:if test="${authority eq 'teacher'}"><th>操作</th></c:if>
         </tr>
         <c:forEach items="${list}" var="approval" varStatus="status">
-            <c:if test = "${approval.state.equals('end')}">
+            <c:if test = "${approval.state eq 'end' and approval.secondResult eq 'null'}">
                 <tr>
                     <td>${approval.id}</td>
                     <td>${approval.courseName}</td>

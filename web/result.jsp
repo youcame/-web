@@ -24,20 +24,31 @@
       <th>课程名称</th>
       <th>学生id</th>
       <th>老师id</th>
-      <th>申请状态</th>
+      <th>一审结果</th>
+      <th>二审结果</th>
       <th>申请原因</th>
       <th>审批原因</th>
     </tr>
     <c:forEach items="${approvalList}" var="approval" varStatus="status">
-      <c:if test="${approval.state.equals('end')}">
+      <c:if test="${approval.state eq 'end' and approval.secondResult ne 'null'}">
         <tr>
           <td>${approval.id}</td>
           <td>${approval.courseName}</td>
           <td>${approval.studentId}</td>
           <td>${approval.teacherId}</td>
-          <td>${approval.state}</td>
+          <td>${approval.result}</td>
+          <td>${approval.secondResult}</td>
           <td>${approval.chooseReason}</td>
-          <td>${approval.rejectReason}</td>
+          <td>
+            <c:choose>
+              <c:when test="${approval.result eq 'true'}">
+                审核通过
+              </c:when>
+              <c:otherwise>
+                ${approval.rejectReason}
+              </c:otherwise>
+            </c:choose>
+          </td
         </tr>
       </c:if>
     </c:forEach>
